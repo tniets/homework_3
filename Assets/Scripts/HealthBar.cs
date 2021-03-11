@@ -13,7 +13,16 @@ public class HealthBar : MonoBehaviour
     private void Awake()
     {
         _slider = GetComponent<Slider>();
+    }
+
+    private void OnEnable()
+    {
         _health.OnHealthPercentageChanged += HandleHealthChanged;
+    }
+
+    private void OnDisable()
+    {
+        _health.OnHealthPercentageChanged -= HandleHealthChanged;
     }
 
     private void HandleHealthChanged(float value)
